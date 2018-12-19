@@ -15,7 +15,7 @@
 - [OpenCV with Tensorflow Models](https://github.com/opencv/opencv/wiki/TensorFlow-Object-Detection-API) for reading and preprocessing images as well as visualizing the classification
 - [Jupyter Notebook](https://jupyter.org/) for documentation
 
-## Tasks
+## Roadmap
 
 - Install and setup Jupyter Notebook in the repository
   - document _here_ how to start
@@ -23,7 +23,8 @@
 - Get the [example](https://github.com/opencv/opencv/wiki/TensorFlow-Object-Detection-API) running (which uses the trained `ssd_mobilenet_v1_coco` model)
   - add comments, document the behaviour
 - Analyze the recommended models
-- Implement own model
+- Implement own model with the COCO dataset filtered by persons.
 - Test own model with the COCO dataset filtered by persons.
+- Add functionality to count the detected persons and visualize the counter
 - Eventually add live classification with a webcam feed
 
