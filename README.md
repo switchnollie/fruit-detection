@@ -4,7 +4,9 @@
 
 - Detect humans reliably
 - Count humans
-(- Use Camera Feed instead of static pictures)
+
+#### Bonus
+- Use Camera Feed instead of static pictures
 
 ## Technologies
 
