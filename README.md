@@ -1,5 +1,12 @@
 # Human Counter (ML Project WS 18/19)
 
+## Installation
+
+All packages are managed through a [conda](https://conda.io/docs/) virtual environment named `human-counter`.
+- Install it with `conda env create -f meta.yml`
+- Activate it with `source activate human-counter` (`activate human-counter` on Windows)
+- Deactivate it with `source deactivate` (`deactivate` on Windows)
+
 ## Goals
 
 - Detect humans reliably
