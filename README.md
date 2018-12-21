@@ -6,6 +6,7 @@ All packages are managed through a [conda](https://conda.io/docs/) virtual envir
 - Install it with `conda env create -f meta.yml`
 - Activate it with `source activate human-counter` (`activate human-counter` on Windows)
 - Deactivate it with `source deactivate` (`deactivate` on Windows)
+- Install new packages with `conda install <NEW_PACKAGE> && conda env export > environment.yml`
 
 ## Goals
 
