@@ -1,6 +1,6 @@
 # Fruit Detection (ML Project WS 18/19)
 
-## Gliederung
+## Report structure and proceeding
 
 1. Introduction: Preprocess Dataset, see if Coco-Dataset would be a good choice too and compare accuracy between RGB and Grayscale → Jochen
 2. Create a Multi Layer Perceptron (MLP) with Fruits-Dataset and document procedure → Tim
