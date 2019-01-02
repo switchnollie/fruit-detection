@@ -1,5 +1,13 @@
 # Human Counter (ML Project WS 18/19)
 
+## Gliederung
+
+1. Einführung Datensatz mit Vorverarbeitung
+2. MLP (siehe Tensorflow/Keras Tutorial) auf Image Datensatz (Früchte-Datensatz) mit Tensorflow visualisieren/an Parametern herumspielen (Layers ändern, Neuronen, overfitting, underfitting ...)
+3. CNN mit Früchte-Datensatz
+4. Echtzeit Webcam Erkennung von Objekten
+
+
 ## Installation
 
 ### Anaconda virtual environment
