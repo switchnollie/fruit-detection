@@ -9,9 +9,11 @@ from keras import models
 size = 100
 # Initialize person counter
 counter = pred = 0
+# Init label
+label = ""
 
 # Load saved cnn-model
-model = models.load_model('model2.h5')
+model = models.load_model('model3.h5')
 
 # Capture onboard webcam
 cam = cv2.VideoCapture(0)
@@ -33,9 +35,18 @@ while True:
 
     # Read in model prediction from image-array
     prediction = int(model.predict_classes(img_array))
+    # Print label instead of prediction
+    if prediction == 1:
+        label = "Apple"
+    elif prediction == 2:
+        label = "Banana"
+    elif prediction == 3:
+        label = "Pear"
+    elif prediction == 4:
+        label = "Orange"
 
     # Show prediction and person counter in frame
-    cv2.putText(frame, "Prediction: " + str(prediction), (10, 440), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+    cv2.putText(frame, "Prediction: " + label, (10, 440), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
 
     # Show frame
     cv2.imshow("Detecting", frame)
