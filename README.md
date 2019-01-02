@@ -2,10 +2,11 @@
 
 ## Gliederung
 
-1. Einführung Datensatz mit Vorverarbeitung
-2. MLP (siehe Tensorflow/Keras Tutorial) mit  Früchtedatensatz mit Tensorboard visualisieren/an Parametern herumspielen (Layers ändern, Neuronen, overfitting, underfitting ...)
-3. CNN mit Früchte-Datensatz
-4. Echtzeit Webcam Erkennung von Objekten
+1. Einführung Datensatz mit Vorverarbeitung (Vergleich rgb x grey) --> Jochen
+2. MLP Modell erstellen und dokumentieren (siehe Tensorflow/Keras Tutorial) mit Früchtedatensatz --> Tim
+3. mit Tensorboard visualisieren und an Parametern herumspielen (Layers ändern, Neuronen, overfitting, underfitting ...) --> Yannick
+3. CNN mit Früchte-Datensatz Code --> Passi 
+4. Echtzeit Webcam Erkennung von Früchten + bounding box --> 
 
 
 ## Installation
