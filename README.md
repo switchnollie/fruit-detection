@@ -2,11 +2,11 @@
 
 ## Gliederung
 
-1. Einführung Datensatz mit Vorverarbeitung (Vergleich rgb x grey) --> Jochen
-2. MLP Modell erstellen und dokumentieren (siehe Tensorflow/Keras Tutorial) mit Früchtedatensatz --> Tim
-3. mit Tensorboard visualisieren und an Parametern herumspielen (Layers ändern, Neuronen, overfitting, underfitting ...) --> Yannick
-3. CNN mit Früchte-Datensatz Code --> Passi 
-4. Echtzeit Webcam Erkennung von Früchten + bounding box --> 
+1. Introduction: Preprocess Dataset, see if Coco-Dataset would be a good choice too and compare accuracy between RGB and Grayscale → Jochen
+2. Create a Multi Layer Perceptron (MLP) with Fruits-Dataset and document procedure → Tim
+3. Visualize MLP with Tensorboard (train_acc, train_loss, val_acc, val_loss, graph) and try/tweak different parameters (change layers, neurons, overfitting, underfitting, ...) → Yannick
+4. Create a Convolutional Neural Network (CNN) with Fruits-Dataset and optimize val_accuracy. Implement realtime detection with OpenCV → Passi
+5. Improve realtime fruit detection and add model bounding boxes → Valentin
 
 
 ## Installation
