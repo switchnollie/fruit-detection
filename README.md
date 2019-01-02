@@ -1,4 +1,4 @@
-# Human Counter (ML Project WS 18/19)
+# Fruit Detection (ML Project WS 18/19)
 
 ## Gliederung
 
