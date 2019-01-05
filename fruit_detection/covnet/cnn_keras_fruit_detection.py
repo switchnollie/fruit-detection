@@ -53,10 +53,10 @@ train_data = ImageDataGenerator(
 valid_data = ImageDataGenerator(1. / 255)
 
 # Training generators (classes will be automatically generated from subgategories)
-train_generator = train_data.flow_from_directory('./fruits_dataset/train/',
+train_generator = train_data.flow_from_directory('../fruits_dataset/train/',
                                                  target_size=(size, size),
                                                  batch_size=75, class_mode='categorical')
-valid_generator = valid_data.flow_from_directory('./fruits_dataset/valid/',
+valid_generator = valid_data.flow_from_directory('../fruits_dataset/valid/',
                                                  target_size=(size, size),
                                                  batch_size=75, class_mode='categorical')
 
