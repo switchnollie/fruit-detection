@@ -53,6 +53,7 @@ train_data = ImageDataGenerator(
 valid_data = ImageDataGenerator(1. / 255)
 
 # Training generators (classes will be automatically generated from subgategories)
+<<<<<<< HEAD:fruit_detection/covnet/cnn_keras_fruit_detection.py
 train_generator = train_data.flow_from_directory('../dataset/train/',
                                                  target_size=(size, size),
                                                  batch_size=75, class_mode='categorical')
