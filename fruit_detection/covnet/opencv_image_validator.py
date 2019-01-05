@@ -1,49 +1,18 @@
-#!/bin/python3.6
-
+from keras.models import load_model
 import numpy as np
 import cv2
-from PIL import Image
-from keras import models
+import matplotlib as plt
 
-# Image size (one axis)
-size = 100
-# Init label
-label = ""
+model = load_model('model3.h5')
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-# Load saved cnn-model
-model = models.load_model('model3.h5')
+img = cv2.imread('../dataset/valid/2/12_100.jpg')
 
-# Capture onboard webcam
-cam = cv2.imread("./fruits_dataset/valid/pear/1.jpg")
+i = np.expand_dims(img, axis=0)
 
-# ... in RGB-mode
-img = Image.fromarray(cam, 'RGB')
-# Resize img for accuracy in prediction
-img = img.resize((size, size))
-# Create an array of framed image
-img_array = np.array(img)
-# Append dimension at beginning of array (needed for conv2d-input)
-img_array = np.expand_dims(img_array, axis=0)
+print(model.predict_classes(i))
 
-# Read in model prediction from image-array
-prediction = int(model.predict_classes(img_array))
-# Print label instead of prediction
-if prediction == 1:
-    label = "Apple"
-elif prediction == 2:
-    label = "Banana"
-elif prediction == 3:
-    label = "Pear"
-elif prediction == 4:
-    label = "Orange"
+cv2.imshow("Image", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
-print(prediction, label)
-
-while True:
-
-    cv2.imshow("Image", cam)
-
-    key = cv2.waitKey(1)
-    # Quit capture if key "q" is pressed
-    if key == ord('q'):
-        break
