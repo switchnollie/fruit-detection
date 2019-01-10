@@ -1,6 +1,7 @@
 import numpy as np
 from keras.datasets import cifar100
 import scipy.misc
+from matplotlib import pyplot as plt
 
 
 # Load apple, orange, pear and man from CIFAR100-dataset
@@ -44,8 +45,8 @@ for i in range(len(y_test)):
     elif y_test[i] == 57:
         np.put(y_test, i, 3)
 
-x_train = x_train.astype('float32')
-x_test = x_test.astype('float32')
+# x_train = x_train.astype('float32')
+# x_test = x_test.astype('float32')
 
 
 def save_train_images(x_train):
@@ -62,3 +63,24 @@ def save_test_images(x_test):
 
 # save_train_images(x_train)
 # save_test_images(x_test)
+
+def show_image_plots(x_train):
+    # Dafür plotten wir jeweils 1 Bild der drei Kategorien.
+    fig = plt.figure(figsize=(16, 6))
+
+    apple = fig.add_subplot(1, 3, 1)
+    apple.set_title("Apple")
+    apple.imshow(x_train[0])
+
+    orange = fig.add_subplot(1, 3, 2)
+    orange.set_title("Orange")
+    orange.imshow(x_train[1])
+
+    pear = fig.add_subplot(1, 3, 3)
+    pear.set_title("Pear")
+    pear.imshow(x_train[6])
+
+    plt.show()
+
+
+# show_image_plots(x_train)
