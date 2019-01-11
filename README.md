@@ -2,7 +2,9 @@
 
 ## Report structure and proceeding
 
-1. Introduction: Preprocess Dataset, see if Coco-Dataset would be a good choice too and compare accuracy between RGB and Grayscale → Alle
+### Intro
+
+1. Write introduction to topic → Alle
 
 ### MLP
 
