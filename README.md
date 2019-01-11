@@ -8,14 +8,14 @@
 
 ### MLP
 
-2. Create a Multi Layer Perceptron (MLP) with Cifar100 and document procedure (Grayscale and RGB → Document differences) → Tim
+2. Create a Multi Layer Perceptron (MLP) with Cifar100 and document procedure (Grayscale and RGB? → Document differences) → Tim
 3. Visualize MLP with Tensorboard (train_acc, train_loss, val_acc, val_loss, graph) and try/tweak different parameters (change layers, neurons, overfitting, underfitting, ...) → Yannick
 
 Document alle results and code for jupyter notebook!
 
 ### CNN
 
-4. Change model parameter (layers, epochs, ...) to optimize classification accuracy (visualize confusion matrix, ..) and save model → Pascal, Valentin, Joachim
+4. Change model parameter (layers, epochs, ..., grayscale vs RGB) to optimize classification accuracy (visualize confusion matrix, ..) and save model → Pascal, Valentin, Joachim
 5. Change model parameters (layers, epochs, ...) to optimize live classification predictions) → Pascal, Valentin, Joachim
 
 Document alle results and code for jupyter notebook!
