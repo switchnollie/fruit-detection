@@ -52,13 +52,13 @@ for i in range(len(y_test)):
 def save_train_images(x_train):
     j = 0
     for j in range(len(x_train)):
-        scipy.misc.imsave('./images/train/' + str(j) + '.jpg', x_train[j])
+        scipy.misc.imsave('./img/train/' + str(j) + '.jpg', x_train[j])
 
 
 def save_test_images(x_test):
     j = 0
     for j in range(len(x_test)):
-        scipy.misc.imsave('./images/test/' + str(j) + '.jpg', x_test[j])
+        scipy.misc.imsave('./img/test/' + str(j) + '.jpg', x_test[j])
 
 
 # save_train_images(x_train)
