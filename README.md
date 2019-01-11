@@ -2,11 +2,27 @@
 
 ## Report structure and proceeding
 
-1. Introduction: Preprocess Dataset, see if Coco-Dataset would be a good choice too and compare accuracy between RGB and Grayscale → Jochen
-2. Create a Multi Layer Perceptron (MLP) with Fruits-Dataset and document procedure → Tim
+### Intro
+
+1. Write introduction to topic → Alle
+
+### MLP
+
+2. Create a Multi Layer Perceptron (MLP) with Cifar100 and document procedure (Grayscale and RGB → Document differences) → Tim
 3. Visualize MLP with Tensorboard (train_acc, train_loss, val_acc, val_loss, graph) and try/tweak different parameters (change layers, neurons, overfitting, underfitting, ...) → Yannick
-4. Create a Convolutional Neural Network (CNN) with Fruits-Dataset and optimize val_accuracy. Implement realtime detection with OpenCV → Passi
-5. Improve realtime fruit detection and add model bounding boxes → Valentin
+
+Document alle results and code for jupyter notebook!
+
+### CNN
+
+4. Change model parameter (layers, epochs, ...) to optimize classification accuracy (visualize confusion matrix, ..) and save model → Pascal, Valentin, Joachim
+5. Change model parameters (layers, epochs, ...) to optimize live classification predictions) → Pascal, Valentin, Joachim
+
+Document alle results and code for jupyter notebook!
+
+### Summary
+
+6. Write results to jupyter notebook.
 
 
 ## Installation
