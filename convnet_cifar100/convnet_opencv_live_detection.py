@@ -13,7 +13,7 @@ counter = pred = 0
 label = ""
 
 # Load saved cnn-model
-model = models.load_model('model1547045273.8620653.h5')
+model = models.load_model('model.h5')
 
 # Capture onboard webcam
 cam = cv2.VideoCapture(0)
@@ -37,13 +37,12 @@ while True:
     prediction = model.predict_classes(img_array)
     # Print label instead of prediction
     if prediction == 0:
-        label = "No fruit"
-    elif prediction == 1:
         label = "Apple"
-    elif prediction == 2:
+    elif prediction == 1:
         label = "Orange"
-    elif prediction == 3:
+    elif prediction == 2:
         label = "Pear"
+
 
     # Show prediction and person counter in frame
     cv2.putText(frame, "Prediction: " + label, (10, 440), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)

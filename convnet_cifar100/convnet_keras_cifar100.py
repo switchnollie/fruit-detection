@@ -1,80 +1,113 @@
+import numpy as np
+
 from keras.datasets import cifar100
 from keras.utils import to_categorical
 from keras import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dropout, Dense
-from time import time
-import numpy as np
 
+from sklearn.metrics import confusion_matrix
+
+# import matplotlib.pyplot as plt
 
 # Load apple, orange, pear and man from CIFAR100-dataset
 (x_train, y_train), (x_test, y_test) = cifar100.load_data(label_mode='fine')
 
-indices_train = []
-indices_test = []
+indices_train, indices_test = [], []
 
-# 46 = man
+# Wir untersuchen, ob es sich bei einem Eintrag der Trainings-Labels um eines der Früchte handelt.
+# Falls ja, fügen wir dessen Index einem zuvor initialisiertem Array hinzu.
 for i in range(len(y_train)):
-    if y_train[i] == 0 or y_train[i] == 46 or y_train[i] == 53 or y_train[i] == 57:
+    if y_train[i] == 0 or y_train[i] == 53 or y_train[i] == 57:
         indices_train.append(i)
 
+# Selbiges führen wir für alle Test-Labels durch.
 for i in range(len(y_test)):
-    if y_test[i] == 0 or y_test[i] == 46 or y_test[i] == 53 or y_test[i] == 57:
+    if y_test[i] == 0 or y_test[i] == 53 or y_test[i] == 57:
         indices_test.append(i)
 
+# Wir reduzieren unsere Trainings- und Test-Labels auf alle die, der Früchte.
 y_train = np.array(y_train[indices_train])
 y_test = np.array(y_test[indices_test])
 
+# Wir reduzieren unsere Trainings- und Testdaten auf alle die, der Früchte.
 x_train = x_train[np.ravel(indices_train)]
 x_test = x_test[np.ravel(indices_test)]
 
+# Für die Konvertierung unserer Label-Vektoren in Binäre-Klassenmatrizen, ändern wir alle ursprünglichen
+# Trainings- und Test-Labels in die Werte 0-2. Man beachte: range(start, ende) inkludiert ende nicht!
 for i in range(len(y_train)):
-    if y_train[i] == 46:
+    if y_train[i] == 0:
         np.put(y_train, i, 0)
-    elif y_train[i] == 0:
-        np.put(y_train, i, 1)
     elif y_train[i] == 53:
-        np.put(y_train, i, 2)
+        np.put(y_train, i, 1)
     elif y_train[i] == 57:
-        np.put(y_train, i, 3)
+        np.put(y_train, i, 2)
 
 for i in range(len(y_test)):
-    if y_test[i] == 46:
+    if y_test[i] == 0:
         np.put(y_test, i, 0)
-    elif y_test[i] == 0:
-        np.put(y_test, i, 1)
     elif y_test[i] == 53:
-        np.put(y_test, i, 2)
+        np.put(y_test, i, 1)
     elif y_test[i] == 57:
-        np.put(y_test, i, 3)
+        np.put(y_test, i, 2)
 
+# Die Konvertierung unser Label-Vektoren in Binäre-Klassenmatrizen wird für unseren Datensatz benötigt.
+y_train = to_categorical(y_train, 3)
+y_test = to_categorical(y_test, 3)
+
+# Dafür plotten wir jeweils 1 Bild der drei Kategorien.
+# fig = plt.figure(figsize=(16, 6))
+#
+# apple = fig.add_subplot(1, 3, 1)
+# apple.set_title("Apple")
+# apple.imshow(x_train[0])
+#
+# orange = fig.add_subplot(1, 3, 2)
+# orange.set_title("Orange")
+# orange.imshow(x_train[1])
+#
+# pear = fig.add_subplot(1, 3, 3)
+# pear.set_title("Pear")
+# pear.imshow(x_train[6])
+#
+# plt.show()
+
+# Wir müssen zuvor unsere Bilddaten in Float-Datentypen casten, dass wir Gleitkommazahlen bekommen.
 x_train = x_train.astype('float32')
 x_test = x_test.astype('float32')
+
+# Konvertieren der RGB-Werte in Werte zwischen [0;1]
 x_train /= 255
 x_test /= 255
 
-# Needs to be used for categorical_accuracy-metrics
-y_train = to_categorical(y_train, 4)
-y_test = to_categorical(y_test, 4)
-
-# Create convnet
+# Wir definieren unser Model über einen Stapel von Schichten. Hierzu initialisieren wir unser sequentialles Modell.
 model = Sequential()
-model.add(Conv2D(96, (3, 3), activation='relu', input_shape=(32, 32, 3)))
+
+model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)))
 model.add(MaxPooling2D((2, 2)))
 
-model.add(Conv2D(128, (3, 3), activation='relu'))
+model.add(Conv2D(96, (3, 3), activation='relu'))
 model.add(MaxPooling2D((2, 2)))
 
-model.add(Conv2D(256, (3, 3), activation='relu'))
-model.add(Conv2D(512, (3, 3), activation='relu'))
+model.add(Conv2D(192, (3, 3), activation='relu'))
 model.add(MaxPooling2D((2, 2)))
 
 model.add(Dropout(0.4))
 model.add(Flatten())
 
-model.add(Dense(2048, activation='relu'))
-model.add(Dense(4, activation='softmax'))
+model.add(Dense(96, activation='relu'))
+model.add(Dense(3, activation='softmax'))
 
-model.compile(loss='categorical_crossentropy', optimizer='Adam', metrics=['categorical_accuracy'])
-model.fit(x_train, y_train, epochs=5, validation_data=(x_test, y_test))
+model.compile(loss='categorical_crossentropy', optimizer='Adam', metrics=['accuracy'])
+
+model.fit(x_train, y_train, epochs=15, validation_data=(x_test, y_test))
+
+# Vorhersagen der Testdaten-Labels.
+y_pred = model.predict_classes(x_test, verbose=0)
+
+# Umkehren der binären Klassenmatrix zu kategorischen Vektoren für Confusion Matrix.
+y_test_rev = [np.argmax(y, axis=None, out=None) for y in y_test]
+print(confusion_matrix(y_test_rev, y_pred))
+
 # Save model to file
-model.save("model" + str(time()) + ".h5")
+model.save("model1.h5")
