@@ -11,10 +11,18 @@
 2. Create a Multi Layer Perceptron (MLP) with Cifar100 and document procedure (Grayscale and RGB → Document differences) → Tim
 3. Visualize MLP with Tensorboard (train_acc, train_loss, val_acc, val_loss, graph) and try/tweak different parameters (change layers, neurons, overfitting, underfitting, ...) → Yannick
 
+Document alle results and code for jupyter notebook!
+
 ### CNN
 
-4. Create a Convolutional Neural Network (CNN) with CIFAR100 and optimize val_accuracy. Implement realtime classification with OpenCV → Passi
-5. Improve realtime fruit classification and add model bounding boxes → Valentin
+4. Change model parameter (layers, epochs, ...) to optimize classification accuracy (visualize confusion matrix, ..) and save model → Pascal, Valentin, Joachim
+5. Change model parameters (layers, epochs, ...) to optimize live classification predictions) → Pascal, Valentin, Joachim
+
+Document alle results and code for jupyter notebook!
+
+### Summary
+
+6. Write results to jupyter notebook.
 
 
 ## Installation
