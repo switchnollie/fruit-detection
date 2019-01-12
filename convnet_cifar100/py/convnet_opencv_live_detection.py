@@ -43,7 +43,6 @@ while True:
     elif prediction == 2:
         label = "Pear"
 
-
     # Show prediction and person counter in frame
     cv2.putText(frame, "Prediction: " + label, (10, 440), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
 

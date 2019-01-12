@@ -59,15 +59,15 @@ y_test = to_categorical(y_test, 3)
 # fig = plt.figure(figsize=(16, 6))
 #
 # apple = fig.add_subplot(1, 3, 1)
-# apple.set_title("Apple")
+# apple.set_title(y_train[0])
 # apple.imshow(x_train[0])
 #
 # orange = fig.add_subplot(1, 3, 2)
-# orange.set_title("Orange")
+# orange.set_title(y_train[1])
 # orange.imshow(x_train[1])
 #
 # pear = fig.add_subplot(1, 3, 3)
-# pear.set_title("Pear")
+# pear.set_title(y_train[6])
 # pear.imshow(x_train[6])
 #
 # plt.show()
@@ -106,6 +106,7 @@ model.fit(x_train, y_train, epochs=15, validation_data=(x_test, y_test))
 y_pred = model.predict_classes(x_test, verbose=0)
 
 # Umkehren der binären Klassenmatrix zu kategorischen Vektoren für Confusion Matrix.
+# Gibt Indice des größten Wertes zurück.
 y_test_rev = [np.argmax(y, axis=None, out=None) for y in y_test]
 print(confusion_matrix(y_test_rev, y_pred))
 
