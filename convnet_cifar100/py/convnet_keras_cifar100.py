@@ -8,6 +8,8 @@ from keras.callbacks import TensorBoard
 
 from sklearn.metrics import confusion_matrix
 
+import matplotlib.pyplot as plt
+
 from time import time
 
 # import matplotlib.pyplot as plt
@@ -111,7 +113,7 @@ model.compile(loss='categorical_crossentropy', optimizer='Adam', metrics=['accur
 # Initialisieren unseres Tensorboard-Callbacks zur späteren Visualisierung unserer Metriken.
 tensorboard = TensorBoard(log_dir="logs/{}".format(time()))
 
-model.fit(x_train, y_train, epochs=50, validation_data=(x_test, y_test), callbacks=[tensorboard])
+history = model.fit(x_train, y_train, epochs=15, validation_data=(x_test, y_test), callbacks=[tensorboard])
 
 # Vorhersagen der Testdaten-Labels.
 y_pred = model.predict_classes(x_test, verbose=0)
@@ -125,5 +127,15 @@ print("Test-accuracy: " + str(score[1]*100) + "%")
 y_test_rev = [np.argmax(y, axis=None, out=None) for y in y_test]
 print(confusion_matrix(y_test_rev, y_pred))
 
+# Accuracy und loss für train und test plotten.
+# plt.plot(history.history['acc'])
+# plt.plot(history.history['val_acc'])
+# plt.plot(history.history['loss'])
+# plt.plot(history.history['val_loss'])
+# plt.ylabel('acc/loss')
+# plt.xlabel('epoch')
+# plt.legend(['train_acc', 'test_acc', 'train_loss', 'test_loss'], loc='upper left')
+# plt.show()
+
 # Save model to file
-model.save("model.h5")
+# model.save("model.h5")
