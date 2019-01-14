@@ -4,8 +4,11 @@ from keras.datasets import cifar100
 from keras.utils import to_categorical
 from keras import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dropout, Dense
+from keras.callbacks import TensorBoard
 
 from sklearn.metrics import confusion_matrix
+
+from time import time
 
 # import matplotlib.pyplot as plt
 
@@ -92,15 +95,23 @@ model.add(MaxPooling2D((2, 2)))
 model.add(Conv2D(192, (3, 3), activation='relu'))
 model.add(MaxPooling2D((2, 2)))
 
+# Ein Dropout-Layer dient der Verhinderung eines Overfittings während des Trainungsdurch zufällige Deaktivierung
+# von Neuronen (hier: 40%).
 model.add(Dropout(0.4))
+# Dient der Dimensionsreduktion. Wird für Verwendung von Dense Layern benötigt.
 model.add(Flatten())
 
+# Voll verbundene Neuronen.
 model.add(Dense(96, activation='relu'))
 model.add(Dense(3, activation='softmax'))
 
+# Konfiguration der Trainingsparameter.
 model.compile(loss='categorical_crossentropy', optimizer='Adam', metrics=['accuracy'])
 
-model.fit(x_train, y_train, epochs=15, validation_data=(x_test, y_test))
+# Initialisieren unseres Tensorboard-Callbacks zur späteren Visualisierung unserer Metriken.
+tensorboard = TensorBoard(log_dir="logs/{}".format(time()))
+
+model.fit(x_train, y_train, epochs=100, validation_data=(x_test, y_test), callbacks=[tensorboard])
 
 # Vorhersagen der Testdaten-Labels.
 y_pred = model.predict_classes(x_test, verbose=0)

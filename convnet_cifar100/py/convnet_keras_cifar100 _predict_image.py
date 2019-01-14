@@ -64,7 +64,7 @@ x_test /= 255
 
 rdn_img = randint(0, len(x_test))
 
-model = models.load_model("../h5/model.h5")
+model = models.load_model("../h5/model_0.9907_0.8733.h5")
 
 x_test_pred = x_test[rdn_img]
 x_test_pred = np.expand_dims(x_test_pred, axis=0)
@@ -74,5 +74,5 @@ y_pred = model.predict_classes(x_test_pred, verbose=0)
 print(y_pred)
 
 # Dafür plotten wir jeweils 1 Bild der drei Kategorien.
-plt.imshow(x_train[rdn_img])
+plt.imshow(x_test[rdn_img])
 plt.show()
