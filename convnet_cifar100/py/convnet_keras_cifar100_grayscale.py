@@ -122,10 +122,14 @@ model.fit(x_train, y_train, epochs=50, validation_data=(x_test, y_test), callbac
 # Vorhersagen der Testdaten-Labels.
 y_pred = model.predict_classes(x_test, verbose=0)
 
+# Ausgeben der Test-accuracy
+score = model.evaluate(x_test, y_test)
+print("Test-accuracy: " + str(score[1]*100) + "%")
+
 # Umkehren der binären Klassenmatrix zu kategorischen Vektoren für Confusion Matrix.
 # Gibt Indice des größten Wertes zurück.
 y_test_rev = [np.argmax(y, axis=None, out=None) for y in y_test]
 print(confusion_matrix(y_test_rev, y_pred))
 
 # Save model to file
-model.save("model1.h5")
+model.save("model_gr.h5")

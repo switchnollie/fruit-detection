@@ -64,7 +64,12 @@ x_test /= 255
 
 rdn_img = randint(0, len(x_test))
 
-model = models.load_model("../h5/model_0.9907_0.8733.h5")
+model = models.load_model("../h5/model_e500_train0.9993_val0.8867.h5")
+
+# Ausgeben der Test-accuracy
+score = model.evaluate(x_test, y_test)
+print("Test-accuracy: " + str(score[1]*100) + "%")
+
 
 x_test_pred = x_test[rdn_img]
 x_test_pred = np.expand_dims(x_test_pred, axis=0)

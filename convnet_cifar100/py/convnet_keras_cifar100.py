@@ -111,10 +111,14 @@ model.compile(loss='categorical_crossentropy', optimizer='Adam', metrics=['accur
 # Initialisieren unseres Tensorboard-Callbacks zur späteren Visualisierung unserer Metriken.
 tensorboard = TensorBoard(log_dir="logs/{}".format(time()))
 
-model.fit(x_train, y_train, epochs=100, validation_data=(x_test, y_test), callbacks=[tensorboard])
+model.fit(x_train, y_train, epochs=50, validation_data=(x_test, y_test), callbacks=[tensorboard])
 
 # Vorhersagen der Testdaten-Labels.
 y_pred = model.predict_classes(x_test, verbose=0)
+
+# Ausgeben der Test-accuracy
+score = model.evaluate(x_test, y_test)
+print("Test-accuracy: " + str(score[1]*100) + "%")
 
 # Umkehren der binären Klassenmatrix zu kategorischen Vektoren für Confusion Matrix.
 # Gibt Indice des größten Wertes zurück.
@@ -122,4 +126,4 @@ y_test_rev = [np.argmax(y, axis=None, out=None) for y in y_test]
 print(confusion_matrix(y_test_rev, y_pred))
 
 # Save model to file
-model.save("model1.h5")
+model.save("model.h5")
