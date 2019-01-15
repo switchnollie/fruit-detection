@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77f47d2f-3c60-42b7-a791-f47ba6500675" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/py/logs/1547471155.4507744/events.out.tfevents.1547471158.Groot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/logs/1547471453.8218813/events.out.tfevents.1547471456.Groot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/logs/1547471504.5896046/events.out.tfevents.1547471507.Groot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/logs/1547471694.87355/events.out.tfevents.1547471698.Groot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/logs/1547471811.3155959/events.out.tfevents.1547471814.Groot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/h5/model.h5" beforeDir="false" afterPath="$PROJECT_DIR$/h5/model.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/h5/model1547045273.8620653.h5" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ipynb/convnet_cifar100_keras.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/ipynb/convnet_cifar100_keras.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/convnet_keras_cifar100 _predict_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/convnet_keras_cifar100 _predict_image.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/py/convnet_keras_cifar100.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/convnet_keras_cifar100.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/convnet_opencv_live_detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/convnet_opencv_live_detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/logs/1547471155.4507744/events.out.tfevents.1547471158.Groot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/logs/1547471453.8218813/events.out.tfevents.1547471456.Groot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/logs/1547471504.5896046/events.out.tfevents.1547471507.Groot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/logs/1547471694.87355/events.out.tfevents.1547471698.Groot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/logs/1547471811.3155959/events.out.tfevents.1547471814.Groot" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,17 +22,27 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/convnet_cifar100$convnet_keras_cifar100.coverage" NAME="convnet_keras_cifar100 Coverage Results" MODIFIED="1547471809187" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py" />
-    <SUITE FILE_PATH="coverage/convnet_cifar100$convnet_keras_cifar100__predict_image.coverage" NAME="convnet_keras_cifar100 _predict_image Coverage Results" MODIFIED="1547468917668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py" />
+    <SUITE FILE_PATH="coverage/convnet_cifar100$convnet_keras_cifar100.coverage" NAME="convnet_keras_cifar100 Coverage Results" MODIFIED="1547567854780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py" />
+    <SUITE FILE_PATH="coverage/convnet_cifar100$convnet_keras_cifar100__predict_image.coverage" NAME="convnet_keras_cifar100 _predict_image Coverage Results" MODIFIED="1547564280160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py" />
     <SUITE FILE_PATH="coverage/convnet_cifar100$convnet_keras_cifar100_grayscale.coverage" NAME="convnet_keras_cifar100_grayscale Coverage Results" MODIFIED="1547464115462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py" />
+    <SUITE FILE_PATH="coverage/convnet_cifar100$convnet_opencv_live_detection.coverage" NAME="convnet_opencv_live_detection Coverage Results" MODIFIED="1547564615988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/py/convnet_keras_cifar100.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="604">
-              <caret line="140" column="2" selection-start-line="140" selection-start-column="2" selection-end-line="140" selection-end-column="2" />
+            <state relative-caret-position="224">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/py/convnet_keras_cifar100 _predict_image.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1137">
+              <caret line="72" selection-start-line="72" selection-end-line="72" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -36,7 +50,24 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/py/convnet_opencv_live_detection.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="29" column="15" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>'</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>&quot;</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -44,8 +75,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/py/convnet_keras_cifar100 _predict_image.py" />
         <option value="$PROJECT_DIR$/py/convnet_keras_cifar100_grayscale.py" />
+        <option value="$PROJECT_DIR$/py/convnet_keras_cifar100 _predict_image.py" />
+        <option value="$PROJECT_DIR$/py/convnet_opencv_live_detection.py" />
         <option value="$PROJECT_DIR$/py/convnet_keras_cifar100.py" />
       </list>
     </option>
@@ -166,9 +198,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="convnet_opencv_live_detection" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="convnet_cifar100" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/py/convnet_opencv_live_detection.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.convnet_keras_cifar100" />
+        <item itemvalue="Python.convnet_opencv_live_detection" />
         <item itemvalue="Python.convnet_keras_cifar100 _predict_image" />
         <item itemvalue="Python.convnet_keras_cifar100_grayscale" />
       </list>
@@ -187,17 +242,18 @@
       <workItem from="1547462449088" duration="5395000" />
       <workItem from="1547470978534" duration="1699000" />
       <workItem from="1547472737724" duration="21000" />
+      <workItem from="1547559680999" duration="7764000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7115000" />
+    <option name="totallyTimeSpent" value="14879000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1052" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25506938" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25773746" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -216,7 +272,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.32977587" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.50053364" />
       <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
@@ -234,10 +290,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/py/convnet_opencv_live_detection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="29" column="15" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/py/convnet_keras_cifar100 _predict_image.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        <state relative-caret-position="1137">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -246,11 +309,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/py/convnet_keras_cifar100.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
-          <caret line="140" column="2" selection-start-line="140" selection-start-column="2" selection-end-line="140" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="224">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>

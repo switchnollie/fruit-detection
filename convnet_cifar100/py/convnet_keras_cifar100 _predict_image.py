@@ -64,7 +64,7 @@ x_test /= 255
 
 rdn_img = randint(0, len(x_test))
 
-model = models.load_model("../h5/model_e500_train0.9993_val0.8867.h5")
+model = models.load_model("../h5/model.h5")
 
 # Ausgeben der Test-accuracy
 score = model.evaluate(x_test, y_test)

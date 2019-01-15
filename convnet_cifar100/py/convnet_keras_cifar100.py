@@ -21,6 +21,7 @@ indices_train, indices_test = [], []
 
 # Wir untersuchen, ob es sich bei einem Eintrag der Trainings-Labels um eines der Früchte handelt.
 # Falls ja, fügen wir dessen Index einem zuvor initialisiertem Array hinzu.
+# 0 = Apfel, 1 = Orange, 2 = Birne
 for i in range(len(y_train)):
     if y_train[i] == 0 or y_train[i] == 53 or y_train[i] == 57:
         indices_train.append(i)
@@ -90,30 +91,32 @@ model = Sequential()
 
 model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)))
 model.add(MaxPooling2D((2, 2)))
+model.add(Dropout(0.5))
 
 model.add(Conv2D(96, (3, 3), activation='relu'))
 model.add(MaxPooling2D((2, 2)))
+model.add(Dropout(0.5))
 
 model.add(Conv2D(192, (3, 3), activation='relu'))
 model.add(MaxPooling2D((2, 2)))
 
 # Ein Dropout-Layer dient der Verhinderung eines Overfittings während des Trainungsdurch zufällige Deaktivierung
-# von Neuronen (hier: 40%).
-model.add(Dropout(0.4))
+# von Neuronen (hier: 50%).
+model.add(Dropout(0.5))
 # Dient der Dimensionsreduktion. Wird für Verwendung von Dense Layern benötigt.
 model.add(Flatten())
 
 # Voll verbundene Neuronen.
-model.add(Dense(96, activation='relu'))
+model.add(Dense(192, activation='relu'))
 model.add(Dense(3, activation='softmax'))
 
 # Konfiguration der Trainingsparameter.
-model.compile(loss='categorical_crossentropy', optimizer='Adam', metrics=['accuracy'])
+model.compile(loss='mean_squared_error', optimizer='Adam', metrics=['accuracy'])
 
 # Initialisieren unseres Tensorboard-Callbacks zur späteren Visualisierung unserer Metriken.
 tensorboard = TensorBoard(log_dir="logs/{}".format(time()))
 
-history = model.fit(x_train, y_train, epochs=15, validation_data=(x_test, y_test), callbacks=[tensorboard])
+history = model.fit(x_train, y_train, epochs=50, validation_data=(x_test, y_test), callbacks=[tensorboard])
 
 # Vorhersagen der Testdaten-Labels.
 y_pred = model.predict_classes(x_test, verbose=0)
@@ -128,14 +131,14 @@ y_test_rev = [np.argmax(y, axis=None, out=None) for y in y_test]
 print(confusion_matrix(y_test_rev, y_pred))
 
 # Accuracy und loss für train und test plotten.
-# plt.plot(history.history['acc'])
-# plt.plot(history.history['val_acc'])
-# plt.plot(history.history['loss'])
-# plt.plot(history.history['val_loss'])
-# plt.ylabel('acc/loss')
-# plt.xlabel('epoch')
-# plt.legend(['train_acc', 'test_acc', 'train_loss', 'test_loss'], loc='upper left')
-# plt.show()
+plt.plot(history.history["acc"])
+plt.plot(history.history["val_acc"])
+plt.plot(history.history["loss"])
+plt.plot(history.history["val_loss"])
+plt.ylabel("acc/loss")
+plt.xlabel("epoch")
+plt.legend(["train_acc", "test_acc", "train_loss", "test_loss"], loc="center right")
+plt.show()
 
 # Save model to file
-# model.save("model.h5")
+# model.save("../h5/model_50.h5")
