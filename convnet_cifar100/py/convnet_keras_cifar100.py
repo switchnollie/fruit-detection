@@ -17,45 +17,23 @@ from time import time
 # Load apple, orange, pear and man from CIFAR100-dataset
 (x_train, y_train), (x_test, y_test) = cifar100.load_data(label_mode='fine')
 
-indices_train, indices_test = [], []
-
 # Wir untersuchen, ob es sich bei einem Eintrag der Trainings-Labels um eines der Früchte handelt.
 # Falls ja, fügen wir dessen Index einem zuvor initialisiertem Array hinzu.
 # 0 = Apfel, 1 = Orange, 2 = Birne
-for i in range(len(y_train)):
-    if y_train[i] == 0 or y_train[i] == 53 or y_train[i] == 57:
-        indices_train.append(i)
-
-# Selbiges führen wir für alle Test-Labels durch.
-for i in range(len(y_test)):
-    if y_test[i] == 0 or y_test[i] == 53 or y_test[i] == 57:
-        indices_test.append(i)
+indices_train = np.where((y_train == 0) | (y_train == 53) | (y_train == 57))[0]
+indices_test = np.where((y_test == 0) | (y_test == 53) | (y_test == 57))[0]
 
 # Wir reduzieren unsere Trainings- und Test-Labels auf alle die, der Früchte.
 y_train = np.array(y_train[indices_train])
 y_test = np.array(y_test[indices_test])
-
 # Wir reduzieren unsere Trainings- und Testdaten auf alle die, der Früchte.
-x_train = x_train[np.ravel(indices_train)]
-x_test = x_test[np.ravel(indices_test)]
+x_train = x_train[indices_train]
+x_test = x_test[indices_test]
 
 # Für die Konvertierung unserer Label-Vektoren in Binäre-Klassenmatrizen, ändern wir alle ursprünglichen
-# Trainings- und Test-Labels in die Werte 0-2. Man beachte: range(start, ende) inkludiert ende nicht!
-for i in range(len(y_train)):
-    if y_train[i] == 0:
-        np.put(y_train, i, 0)
-    elif y_train[i] == 53:
-        np.put(y_train, i, 1)
-    elif y_train[i] == 57:
-        np.put(y_train, i, 2)
-
-for i in range(len(y_test)):
-    if y_test[i] == 0:
-        np.put(y_test, i, 0)
-    elif y_test[i] == 53:
-        np.put(y_test, i, 1)
-    elif y_test[i] == 57:
-        np.put(y_test, i, 2)
+# Trainings- und Test-Labels in die Werte 0-2 mittels lambda-Funktionen.
+y_train = np.array(list(map(lambda i: [1] if i == 53 else ([2] if i == 57 else [0]), y_train)))
+y_test = np.array(list(map(lambda i: [1] if i == 53 else ([2] if i == 57 else [0]), y_test)))
 
 # Die Konvertierung unser Label-Vektoren in Binäre-Klassenmatrizen wird für unseren Datensatz benötigt.
 y_train = to_categorical(y_train, 3)
@@ -135,10 +113,10 @@ plt.plot(history.history["acc"])
 plt.plot(history.history["val_acc"])
 plt.plot(history.history["loss"])
 plt.plot(history.history["val_loss"])
-plt.ylabel("acc/loss")
+plt.ylabel("accuracy / loss")
 plt.xlabel("epoch")
 plt.legend(["train_acc", "test_acc", "train_loss", "test_loss"], loc="center right")
 plt.show()
-
-# Save model to file
-# model.save("../h5/model_50.h5")
+#
+# # Save model to file
+# # model.save("../h5/model_50.h5")
