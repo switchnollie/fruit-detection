@@ -17,6 +17,7 @@ Document alle results and code for jupyter notebook!
 
 4. Change model parameter (layers, epochs, ..., grayscale vs RGB) to optimize classification accuracy (visualize confusion matrix, ..) and save model → Pascal, Valentin, Joachim
 5. Change model parameters (layers, epochs, ...) to optimize live classification predictions) → Pascal, Valentin, Joachim
+6. Trainingsdaten in Training- und Validation splitten. → Pascal
 
 Document alle results and code for jupyter notebook!
 
