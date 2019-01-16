@@ -13,7 +13,7 @@ counter = pred = 0
 label = ""
 
 # Load saved cnn-model
-model = models.load_model('../h5/model_75_1.h5')
+model = models.load_model('../h5/model_75.h5')
 
 # Capture onboard webcam
 cam = cv2.VideoCapture(0)

@@ -7,6 +7,7 @@ from keras.layers import Conv2D, MaxPooling2D, Flatten, Dropout, Dense
 from keras.callbacks import TensorBoard
 
 from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import train_test_split
 
 import matplotlib.pyplot as plt
 
@@ -64,6 +65,9 @@ x_test = x_test.astype('float32')
 x_train /= 255
 x_test /= 255
 
+# Splitten Trainingsdatensatz in Training und Validierung
+x_train, x_valid, y_train, y_valid = train_test_split(x_train, y_train, test_size=0.20)
+
 # Wir definieren unser Model über einen Stapel von Schichten. Hierzu initialisieren wir unser sequentialles Modell.
 model = Sequential()
 
@@ -94,7 +98,7 @@ model.compile(loss='mean_squared_error', optimizer='Adam', metrics=['accuracy'])
 # Initialisieren unseres Tensorboard-Callbacks zur späteren Visualisierung unserer Metriken.
 tensorboard = TensorBoard(log_dir="logs/{}".format(time()))
 
-history = model.fit(x_train, y_train, epochs=50, validation_data=(x_test, y_test), callbacks=[tensorboard])
+history = model.fit(x_train, y_train, epochs=40, validation_data=(x_valid, y_valid), callbacks=[tensorboard])
 
 # Vorhersagen der Testdaten-Labels.
 y_pred = model.predict_classes(x_test, verbose=0)
@@ -119,4 +123,4 @@ plt.legend(["train_acc", "test_acc", "train_loss", "test_loss"], loc="center rig
 plt.show()
 #
 # # Save model to file
-# # model.save("../h5/model_50.h5")
+model.save("../h5/model_250.h5")
