@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77f47d2f-3c60-42b7-a791-f47ba6500675" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/h5/model_9_100.h5" beforeDir="false" afterPath="$PROJECT_DIR$/h5/model_9_100.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/convnet_keras_cifar100.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/convnet_keras_cifar100.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../submission/6_presentation/2_presentation_cnn_group_pascal_schlaak.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../submission/6_presentation/2_presentation_cnn_group_pascal_schlaak.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../submission/6_presentation/logs/1547747016.7938132/events.out.tfevents.1547747016.Groot" beforeDir="false" afterPath="$PROJECT_DIR$/../submission/6_presentation/logs/1547747016.7938132/events.out.tfevents.1547747016.Groot" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +22,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/py/convnet_keras_cifar100.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
+            <state relative-caret-position="412">
               <caret line="122" column="41" selection-start-line="122" selection-start-column="41" selection-end-line="122" selection-end-column="41" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -241,12 +240,12 @@
       <workItem from="1547630202303" duration="81000" />
       <workItem from="1547643217127" duration="3482000" />
       <workItem from="1547732664151" duration="1607000" />
-      <workItem from="1547745618580" duration="458000" />
+      <workItem from="1547745618580" duration="1059000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25315000" />
+    <option name="totallyTimeSpent" value="25916000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1052" extended-state="6" />
@@ -257,7 +256,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.24145535" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24145535" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -291,7 +290,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/py/convnet_keras_cifar100.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
+        <state relative-caret-position="412">
           <caret line="122" column="41" selection-start-line="122" selection-start-column="41" selection-end-line="122" selection-end-column="41" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />

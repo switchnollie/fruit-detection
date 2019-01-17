@@ -4,53 +4,37 @@ from keras.datasets import cifar100
 from keras.utils import to_categorical
 from keras import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dropout, Dense
+from keras.callbacks import TensorBoard
 
 from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import train_test_split
+
+import matplotlib.pyplot as plt
+
+from time import time
 
 # import matplotlib.pyplot as plt
 
 # Load apple, orange, pear and man from CIFAR100-dataset
 (x_train, y_train), (x_test, y_test) = cifar100.load_data(label_mode='fine')
 
-indices_train, indices_test = [], []
-
 # Wir untersuchen, ob es sich bei einem Eintrag der Trainings-Labels um eines der Früchte handelt.
 # Falls ja, fügen wir dessen Index einem zuvor initialisiertem Array hinzu.
-for i in range(len(y_train)):
-    if y_train[i] == 0 or y_train[i] == 53 or y_train[i] == 57:
-        indices_train.append(i)
-
-# Selbiges führen wir für alle Test-Labels durch.
-for i in range(len(y_test)):
-    if y_test[i] == 0 or y_test[i] == 53 or y_test[i] == 57:
-        indices_test.append(i)
+# 0 = Apfel, 1 = Orange, 2 = Birne
+indices_train = np.where((y_train == 0) | (y_train == 53) | (y_train == 57))[0]
+indices_test = np.where((y_test == 0) | (y_test == 53) | (y_test == 57))[0]
 
 # Wir reduzieren unsere Trainings- und Test-Labels auf alle die, der Früchte.
 y_train = np.array(y_train[indices_train])
 y_test = np.array(y_test[indices_test])
-y_test_save = y_test
-
 # Wir reduzieren unsere Trainings- und Testdaten auf alle die, der Früchte.
-x_train = x_train[np.ravel(indices_train)]
-x_test = x_test[np.ravel(indices_test)]
+x_train = x_train[indices_train]
+x_test = x_test[indices_test]
 
 # Für die Konvertierung unserer Label-Vektoren in Binäre-Klassenmatrizen, ändern wir alle ursprünglichen
-# Trainings- und Test-Labels in die Werte 0-2. Man beachte: range(start, ende) inkludiert ende nicht!
-for i in range(len(y_train)):
-    if y_train[i] == 0:
-        np.put(y_train, i, 0)
-    elif y_train[i] == 53:
-        np.put(y_train, i, 1)
-    elif y_train[i] == 57:
-        np.put(y_train, i, 2)
-
-for i in range(len(y_test)):
-    if y_test[i] == 0:
-        np.put(y_test, i, 0)
-    elif y_test[i] == 53:
-        np.put(y_test, i, 1)
-    elif y_test[i] == 57:
-        np.put(y_test, i, 2)
+# Trainings- und Test-Labels in die Werte 0-2 mittels lambda-Funktionen.
+y_train = np.array(list(map(lambda i: [1] if i == 53 else ([2] if i == 57 else [0]), y_train)))
+y_test = np.array(list(map(lambda i: [1] if i == 53 else ([2] if i == 57 else [0]), y_test)))
 
 # Die Konvertierung unser Label-Vektoren in Binäre-Klassenmatrizen wird für unseren Datensatz benötigt.
 y_train = to_categorical(y_train, 3)
@@ -60,15 +44,15 @@ y_test = to_categorical(y_test, 3)
 # fig = plt.figure(figsize=(16, 6))
 #
 # apple = fig.add_subplot(1, 3, 1)
-# apple.set_title("Apple")
+# apple.set_title(y_train[0])
 # apple.imshow(x_train[0])
 #
 # orange = fig.add_subplot(1, 3, 2)
-# orange.set_title("Orange")
+# orange.set_title(y_train[1])
 # orange.imshow(x_train[1])
 #
 # pear = fig.add_subplot(1, 3, 3)
-# pear.set_title("Pear")
+# pear.set_title(y_train[6])
 # pear.imshow(x_train[6])
 #
 # plt.show()
@@ -81,70 +65,65 @@ x_test = x_test.astype('float32')
 x_train /= 255
 x_test /= 255
 
+# Splitten Trainingsdatensatz in Training und Validierung
+x_train, x_valid, y_train, y_valid = train_test_split(x_train, y_train, test_size=0.20)
+
 # Wir definieren unser Model über einen Stapel von Schichten. Hierzu initialisieren wir unser sequentialles Modell.
 model = Sequential()
+
 model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)))
 model.add(MaxPooling2D((2, 2)))
+model.add(Dropout(0.5))
 
 model.add(Conv2D(96, (3, 3), activation='relu'))
 model.add(MaxPooling2D((2, 2)))
+model.add(Dropout(0.5))
 
 model.add(Conv2D(192, (3, 3), activation='relu'))
 model.add(MaxPooling2D((2, 2)))
 
-model.add(Dropout(0.4))
+# Ein Dropout-Layer dient der Verhinderung eines Overfittings während des Trainungsdurch zufällige Deaktivierung
+# von Neuronen (hier: 50%).
+model.add(Dropout(0.5))
+# Dient der Dimensionsreduktion. Wird für Verwendung von Dense Layern benötigt.
 model.add(Flatten())
 
-model.add(Dense(96, activation='relu'))
+# Voll verbundene Neuronen.
+model.add(Dense(192, activation='relu'))
 model.add(Dense(3, activation='softmax'))
 
-model.compile(loss='categorical_crossentropy', optimizer='Adam', metrics=['accuracy'])
+# Konfiguration der Trainingsparameter.
+model.compile(loss='mean_squared_error', optimizer='Adam', metrics=['accuracy'])
 
-model.fit(x_train, y_train, epochs=15, validation_data=(x_test, y_test))
+# Initialisieren unseres Tensorboard-Callbacks zur späteren Visualisierung unserer Metriken.
+tensorboard = TensorBoard(log_dir="logs/{}".format(time()))
+
+history = model.fit(x_train, y_train, epochs=10, validation_data=(x_valid, y_valid), callbacks=[tensorboard])
 
 # Vorhersagen der Testdaten-Labels.
 y_pred = model.predict_classes(x_test, verbose=0)
-# Umkehren der binären Klassenmatrix zu kategorischen Vektoren für Confusion Matrix.
-y_test_rev = [np.argmax(y, axis=None, out=None) for y in y_test]
 
-print(y_test_rev)
+# Ausgeben der Test-accuracy
+score = model.evaluate(x_test, y_test)
+print("Test-accuracy: " + str(score[1]*100) + "%")
+
+# Umkehren der binären Klassenmatrix zu kategorischen Vektoren für Confusion Matrix.
+# Gibt Indice des größten Wertes zurück.
+y_test_rev = [np.argmax(y, axis=None, out=None) for y in y_test]
 print(confusion_matrix(y_test_rev, y_pred))
 
-# Save model to file
-model.save("model11.h5")
+# Accuracy und loss für train und test plotten.
+plt.plot(history.history["acc"])
+plt.plot(history.history["val_acc"])
+plt.plot(history.history["loss"])
+plt.plot(history.history["val_loss"])
+plt.ylabel("accuracy 8375/ loss")
+plt.xlabel("epoch")
+plt.legend(["train_acc", "test_acc", "train_loss", "test_loss"], loc="center right")
+plt.rcParams["figure.figsize"] = (35, 20)
+plt.show()
 
-# Epochs: 10 (Layers: 32, 64, 128, dropout:0.4, 64, 3)
-# loss: 0.4563 - acc: 0.8133
-# val_loss: 0.4367 - val_acc: 0.8467
-# Okay live classification (pear, orange but not apple)
-
-# Epochs: 20 "
-# loss: 0.2474 - acc: 0.9053
-# val_loss: 0.3856 - val_acc: 0.8467
-# Poor live classification
-
-# Epochs: 20 (Layers: 32, 96, 192, dropout:0.3, 96, 3)
-# loss: 0.0995 - acc: 0.9660
-# val_loss: 0.4565 - val_acc: 0.8600
-# Extreme bad live classification
-
-# Epochs: 20 (Layers: 96, 192, 384, dropout:0.5, 1920, 3)
-# loss: 0.2648 - acc: 0.8987
-# val_loss: 0.4645 - val_acc: 0.8567
-
-# Epochs: 20 (Layers: 32, 64, 128+128, dropout:0.2, 96, 3)
-# loss: 0.1779 - acc: 0.9420
-# val_loss: 0.5365 - val_acc: 0.8400
-
-# Epochs: 20 (Layers: 32, 96, 256+256, dropout:0.2, 2046, 3)
-# loss: 0.1328 - acc: 0.9553
-# val_loss: 0.5348 - val_acc: 0.8533
-
-# Epochs: 20 (Layers: 96, 288, 864, dropout:0.3, 2592, 3)
-# loss: 0.2107 - acc: 0.9220
-# val_loss: 0.5102 - val_acc: 0.8300
-
-# Epochs: 20 (Layers: 32, 96, 192, dropout:0.3, 96, 3)
-# loss: 0.0770 - acc: 0.9720
-# val_loss: 0.3765 - val_acc: 0.8867
-# model10
+model.summary()
+#
+# # Save model to file
+# model.save("../h5/model_9_100.h5")
