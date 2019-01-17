@@ -98,7 +98,7 @@ model.compile(loss='mean_squared_error', optimizer='Adam', metrics=['accuracy'])
 # Initialisieren unseres Tensorboard-Callbacks zur späteren Visualisierung unserer Metriken.
 tensorboard = TensorBoard(log_dir="logs/{}".format(time()))
 
-history = model.fit(x_train, y_train, epochs=100, validation_data=(x_valid, y_valid), callbacks=[tensorboard])
+history = model.fit(x_train, y_train, epochs=10, validation_data=(x_valid, y_valid), callbacks=[tensorboard])
 
 # Vorhersagen der Testdaten-Labels.
 y_pred = model.predict_classes(x_test, verbose=0)
@@ -120,9 +120,10 @@ plt.plot(history.history["val_loss"])
 plt.ylabel("accuracy 8375/ loss")
 plt.xlabel("epoch")
 plt.legend(["train_acc", "test_acc", "train_loss", "test_loss"], loc="center right")
+plt.rcParams["figure.figsize"] = (35, 20)
 plt.show()
 
 model.summary()
 #
 # # Save model to file
-model.save("../h5/model_9_100.h5")
+# model.save("../h5/model_9_100.h5")
