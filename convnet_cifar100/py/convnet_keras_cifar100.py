@@ -71,25 +71,26 @@ x_train, x_valid, y_train, y_valid = train_test_split(x_train, y_train, test_siz
 # Wir definieren unser Model über einen Stapel von Schichten. Hierzu initialisieren wir unser sequentialles Modell.
 model = Sequential()
 
-model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)))
-model.add(MaxPooling2D((2, 2)))
-model.add(Dropout(0.5))
+model.add(
+    Conv2D(32, 3, activation='relu', data_format="channels_last", input_shape=(32, 32, 3), strides=1, padding="valid"))
+model.add(MaxPooling2D(2))
+model.add(Dropout(0.2))
 
-model.add(Conv2D(96, (3, 3), activation='relu'))
-model.add(MaxPooling2D((2, 2)))
-model.add(Dropout(0.5))
+model.add(
+    Conv2D(32, 3, activation='relu', data_format="channels_last", input_shape=(32, 32, 3), strides=1, padding="valid"))
+model.add(MaxPooling2D(2))
+model.add(Dropout(0.3))
 
-model.add(Conv2D(192, (3, 3), activation='relu'))
-model.add(MaxPooling2D((2, 2)))
+model.add(
+    Conv2D(32, 3, activation='relu', data_format="channels_last", input_shape=(32, 32, 3), strides=1, padding="valid"))
+model.add(MaxPooling2D(2))
+model.add(Dropout(0.4))
 
-# Ein Dropout-Layer dient der Verhinderung eines Overfittings während des Trainungsdurch zufällige Deaktivierung
-# von Neuronen (hier: 50%).
-model.add(Dropout(0.5))
 # Dient der Dimensionsreduktion. Wird für Verwendung von Dense Layern benötigt.
 model.add(Flatten())
 
 # Voll verbundene Neuronen.
-model.add(Dense(192, activation='relu'))
+model.add(Dense(1024, activation='relu'))
 model.add(Dense(3, activation='softmax'))
 
 # Konfiguration der Trainingsparameter.
@@ -105,7 +106,7 @@ y_pred = model.predict_classes(x_test, verbose=0)
 
 # Ausgeben der Test-accuracy
 score = model.evaluate(x_test, y_test)
-print("Test-accuracy: " + str(score[1]*100) + "%")
+print("Test-accuracy: " + str(score[1] * 100) + "%")
 
 # Umkehren der binären Klassenmatrix zu kategorischen Vektoren für Confusion Matrix.
 # Gibt Indice des größten Wertes zurück.
@@ -117,13 +118,11 @@ plt.plot(history.history["acc"])
 plt.plot(history.history["val_acc"])
 plt.plot(history.history["loss"])
 plt.plot(history.history["val_loss"])
-plt.ylabel("accuracy 8375/ loss")
+plt.ylabel("accuracy / loss")
 plt.xlabel("epoch")
 plt.legend(["train_acc", "test_acc", "train_loss", "test_loss"], loc="center right")
 plt.rcParams["figure.figsize"] = (35, 20)
 plt.show()
 
-model.summary()
-#
 # # Save model to file
 # model.save("../h5/model_9_100.h5")
