@@ -5,6 +5,7 @@ from keras.utils import to_categorical
 from keras import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dropout, Dense
 from keras.callbacks import TensorBoard
+from keras.optimizers import Adam
 
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
@@ -72,17 +73,20 @@ x_train, x_valid, y_train, y_valid = train_test_split(x_train, y_train, test_siz
 model = Sequential()
 
 model.add(
-    Conv2D(32, 3, activation='relu', data_format="channels_last", input_shape=(32, 32, 3), strides=1, padding="valid"))
+    Conv2D(32, 3, activation='relu', data_format="channels_last", input_shape=(32, 32, 3), strides=1, padding="valid",
+           kernel_initializer="he_uniform"))
 model.add(MaxPooling2D(2))
 model.add(Dropout(0.2))
 
 model.add(
-    Conv2D(32, 3, activation='relu', data_format="channels_last", input_shape=(32, 32, 3), strides=1, padding="valid"))
+    Conv2D(32, 3, activation='relu', data_format="channels_last", input_shape=(32, 32, 3), strides=1, padding="valid",
+           kernel_initializer="he_uniform"))
 model.add(MaxPooling2D(2))
 model.add(Dropout(0.3))
 
 model.add(
-    Conv2D(32, 3, activation='relu', data_format="channels_last", input_shape=(32, 32, 3), strides=1, padding="valid"))
+    Conv2D(32, 3, activation='relu', data_format="channels_last", input_shape=(32, 32, 3), strides=1, padding="valid",
+           kernel_initializer="he_uniform"))
 model.add(MaxPooling2D(2))
 model.add(Dropout(0.4))
 
@@ -94,7 +98,7 @@ model.add(Dense(1024, activation='relu'))
 model.add(Dense(3, activation='softmax'))
 
 # Konfiguration der Trainingsparameter.
-model.compile(loss='mean_squared_error', optimizer='Adam', metrics=['accuracy'])
+model.compile(loss='mean_squared_error', optimizer=Adam(lr=0.001), metrics=['accuracy'])
 
 # Initialisieren unseres Tensorboard-Callbacks zur späteren Visualisierung unserer Metriken.
 tensorboard = TensorBoard(log_dir="logs/{}".format(time()))
