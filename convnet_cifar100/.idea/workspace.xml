@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77f47d2f-3c60-42b7-a791-f47ba6500675" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/convnet_keras_cifar100.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/convnet_keras_cifar100.py" afterDir="false" />
-    </list>
+    <list default="true" id="77f47d2f-3c60-42b7-a791-f47ba6500675" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,12 +219,12 @@
       <workItem from="1547745618580" duration="1059000" />
       <workItem from="1547890698804" duration="1931000" />
       <workItem from="1547980753209" duration="8154000" />
-      <workItem from="1548085455980" duration="2718000" />
+      <workItem from="1548085455980" duration="3017000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38719000" />
+    <option name="totallyTimeSpent" value="39018000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1052" extended-state="6" />
@@ -238,7 +235,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30540243" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30540243" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
