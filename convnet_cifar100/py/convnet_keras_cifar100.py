@@ -100,8 +100,6 @@ model.add(Dense(3, activation='softmax'))
 # Konfiguration der Trainingsparameter.
 model.compile(loss='mean_squared_error', optimizer=Adam(lr=0.001), metrics=['accuracy'])
 
-model.summary()
-
 # Initialisieren unseres Tensorboard-Callbacks zur späteren Visualisierung unserer Metriken.
 tensorboard = TensorBoard(log_dir="logs/{}".format(time()))
 
